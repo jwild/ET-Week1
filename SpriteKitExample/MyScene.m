@@ -1,9 +1,10 @@
 #import "MyScene.h"
+#import "gameOver.h"
 static const uint32_t holeCategory     =  0x1 << 0;
 static const uint32_t soldierCategory        =  0x1 << 1;
 @import AVFoundation;
 
-@interface MyScene ()
+@interface MyScene () <SKPhysicsContactDelegate>
 @property (nonatomic) SKSpriteNode * tank;
 @property (nonatomic) SKSpriteNode * field;
 @property (nonatomic) NSNumber * score;
@@ -31,8 +32,8 @@ static const uint32_t soldierCategory        =  0x1 << 1;
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
         
-        
-        
+        //track the score of how many bad guys killed
+        /*
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         label.text = @"Your Score: ";
         label.fontSize = 20;
@@ -46,7 +47,7 @@ static const uint32_t soldierCategory        =  0x1 << 1;
         sc.fontColor = [SKColor blackColor];
         sc.position = CGPointMake(180, 20);
         [self addChild:sc];
-        
+        */
     }
     return self;
 }
@@ -103,6 +104,7 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     NSLog(@"Hit");
     hole.physicsBody = nil;
     [soldier removeFromParent];
+    
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact{
@@ -141,6 +143,12 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     soldier.physicsBody.contactTestBitMask = holeCategory;
     soldier.physicsBody.collisionBitMask = 0;
     
+    SKAction * chkGameStatus = [SKAction runBlock:^{
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        SKScene * GameOverView = [[gameOver alloc] initWithSize:self.size won:NO];
+        [self.view presentScene:GameOverView transition: reveal];
+    }];
+    
     
     int minDuration = 1.0;
     int maxDuration = 3.0;
@@ -149,7 +157,7 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     //move the soldier
     SKAction * actionMove = [SKAction moveTo:CGPointMake(-soldier.size.width/2, actualY) duration:actualDuration];
     SKAction * actionMoveDone = [SKAction removeFromParent];
-    [soldier runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    [soldier runAction:[SKAction sequence:@[actionMove, chkGameStatus, actionMoveDone]]];
     
 }
 

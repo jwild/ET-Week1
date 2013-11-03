@@ -7,7 +7,7 @@ static const uint32_t soldierCategory        =  0x1 << 1;
 @interface MyScene () <SKPhysicsContactDelegate>
 @property (nonatomic) SKSpriteNode * tank;
 @property (nonatomic) SKSpriteNode * field;
-@property (nonatomic) NSNumber * score;
+@property (nonatomic) int score;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @end
@@ -108,7 +108,13 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     NSLog(@"Hit");
     hole.physicsBody = nil;
     [soldier removeFromParent];
-    
+    //set win condition, after 5 soldiers, win game
+    self.score++;
+    if (self.score > 4) {
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        SKScene * gameOverScene = [[gameOver alloc] initWithSize:self.size won:YES];
+        [self.view presentScene:gameOverScene transition: reveal];
+    }
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact{

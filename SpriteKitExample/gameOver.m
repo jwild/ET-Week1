@@ -7,7 +7,7 @@
 //
 
 #import "gameOver.h"
-#import "MyScene.h"
+#import "Home.h"
 
 @implementation gameOver
 
@@ -34,7 +34,7 @@
                               [SKAction waitForDuration:5.0],
                               [SKAction runBlock:^{
              SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-             SKScene * myScene = [[MyScene alloc] initWithSize:self.size];
+             SKScene * myScene = [[Home alloc] initWithSize:self.size];
              [self.view presentScene:myScene transition: reveal];
          }]
                               ]]

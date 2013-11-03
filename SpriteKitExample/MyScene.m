@@ -27,13 +27,12 @@ static const uint32_t soldierCategory        =  0x1 << 1;
         //add my tank
         self.tank = [SKSpriteNode spriteNodeWithImageNamed:@"tank"];
         self.tank.position = CGPointMake(20, 160);
-        self.tank.name = @"test";
         [self addChild:self.tank];
         //turn on physics so bullet can collide
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
         
-        [self addChild: [self buttonNode]];
+       
         
         //track the score of how many bad guys killed
         /*
@@ -55,14 +54,7 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     return self;
 }
 
-- (SKSpriteNode *)buttonNode
-{
-    SKSpriteNode *buttonNode = [SKSpriteNode spriteNodeWithImageNamed:@"shell"];
-    buttonNode.position = CGPointMake(100,100);
-    buttonNode.name = @"buttonNode";
-    buttonNode.zPosition = 1.0;
-    return buttonNode;
-}
+
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     //timer so we spawn a soldier every time it goes over 1 second
@@ -102,11 +94,6 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     hole.physicsBody.contactTestBitMask = soldierCategory;
     hole.physicsBody.collisionBitMask = 0;
     hole.physicsBody.usesPreciseCollisionDetection = YES;
-    
-    SKNode *node = [self nodeAtPoint:location];
-    if ([node.name isEqualToString:@"buttonNode"]) {
-        NSLog(@"soldier clicked");
-    }
     
     //SKAction * selfRemove = [SKSpriteNode deactivateHole];
     //[hole runAction:[SKAction sequence:@[selfRemove]]];
@@ -150,9 +137,11 @@ static const uint32_t soldierCategory        =  0x1 << 1;
     int maxY = self.frame.size.height - soldier.size.height / 2;
     int rangeY = maxY - minY;
     int actualY = (arc4random() % rangeY) + minY;
+    
     //add to stage
     soldier.position = CGPointMake(self.frame.size.width + soldier.size.width/2, actualY);
     [self addChild:soldier];
+    
     //give physics body for collision testing
     soldier.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:soldier.size];
     soldier.physicsBody.dynamic = YES;
@@ -165,7 +154,6 @@ static const uint32_t soldierCategory        =  0x1 << 1;
         SKScene * GameOverView = [[gameOver alloc] initWithSize:self.size won:NO];
         [self.view presentScene:GameOverView transition: reveal];
     }];
-    
     
     int minDuration = 1.0;
     int maxDuration = 3.0;

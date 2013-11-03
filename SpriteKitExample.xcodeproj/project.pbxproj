@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		FF3B77701826242200850B9F /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3B776F1826242200850B9F /* Home.m */; };
 		FF3B77731826244400850B9F /* gameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3B77721826244400850B9F /* gameOver.m */; };
+		FF3B77781826E52000850B9F /* InAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3B77751826E52000850B9F /* InAppManager.m */; };
+		FF3B77791826E52000850B9F /* InAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3B77751826E52000850B9F /* InAppManager.m */; };
+		FF3B777A1826E52000850B9F /* InAppObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3B77771826E52000850B9F /* InAppObserver.m */; };
+		FF3B777B1826E52000850B9F /* InAppObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3B77771826E52000850B9F /* InAppObserver.m */; };
+		FF3B777D1826E5C600850B9F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3B777C1826E5C600850B9F /* StoreKit.framework */; };
 		FF7866331825CF26009947CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7866321825CF26009947CD /* Foundation.framework */; };
 		FF7866351825CF26009947CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7866341825CF26009947CD /* CoreGraphics.framework */; };
 		FF7866371825CF26009947CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7866361825CF26009947CD /* UIKit.framework */; };
@@ -44,6 +49,11 @@
 		FF3B776F1826242200850B9F /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
 		FF3B77711826244400850B9F /* gameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameOver.h; sourceTree = "<group>"; };
 		FF3B77721826244400850B9F /* gameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gameOver.m; sourceTree = "<group>"; };
+		FF3B77741826E52000850B9F /* InAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppManager.h; path = ../InAppManager.h; sourceTree = "<group>"; };
+		FF3B77751826E52000850B9F /* InAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppManager.m; path = ../InAppManager.m; sourceTree = "<group>"; };
+		FF3B77761826E52000850B9F /* InAppObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppObserver.h; path = ../InAppObserver.h; sourceTree = "<group>"; };
+		FF3B77771826E52000850B9F /* InAppObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppObserver.m; path = ../InAppObserver.m; sourceTree = "<group>"; };
+		FF3B777C1826E5C600850B9F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FF78662F1825CF26009947CD /* SpriteKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7866321825CF26009947CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF7866341825CF26009947CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3B777D1826E5C600850B9F /* StoreKit.framework in Frameworks */,
 				FF7866351825CF26009947CD /* CoreGraphics.framework in Frameworks */,
 				FF7866371825CF26009947CD /* UIKit.framework in Frameworks */,
 				FF7866391825CF26009947CD /* SpriteKit.framework in Frameworks */,
@@ -118,6 +129,7 @@
 		FF7866311825CF26009947CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF3B777C1826E5C600850B9F /* StoreKit.framework */,
 				FF7866321825CF26009947CD /* Foundation.framework */,
 				FF7866341825CF26009947CD /* CoreGraphics.framework */,
 				FF7866361825CF26009947CD /* UIKit.framework */,
@@ -130,6 +142,10 @@
 		FF78663A1825CF26009947CD /* SpriteKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				FF3B77741826E52000850B9F /* InAppManager.h */,
+				FF3B77751826E52000850B9F /* InAppManager.m */,
+				FF3B77761826E52000850B9F /* InAppObserver.h */,
+				FF3B77771826E52000850B9F /* InAppObserver.m */,
 				FF3B77711826244400850B9F /* gameOver.h */,
 				FF3B77721826244400850B9F /* gameOver.m */,
 				FF3B776E1826242200850B9F /* Home.h */,
@@ -277,6 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF78664E1825CF26009947CD /* MyScene.m in Sources */,
+				FF3B77781826E52000850B9F /* InAppManager.m in Sources */,
+				FF3B777A1826E52000850B9F /* InAppObserver.m in Sources */,
 				FF3B77701826242200850B9F /* Home.m in Sources */,
 				FF78664B1825CF26009947CD /* ViewController.m in Sources */,
 				FF7866451825CF26009947CD /* AppDelegate.m in Sources */,
@@ -289,7 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3B77791826E52000850B9F /* InAppManager.m in Sources */,
 				FF7866651825CF26009947CD /* SpriteKitExampleTests.m in Sources */,
+				FF3B777B1826E52000850B9F /* InAppObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

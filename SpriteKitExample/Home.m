@@ -15,6 +15,7 @@
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
+        //WOO title and labels!
         NSString * welcomeMsg = @"Welcome to Soldier Escape!";
         NSString * gameMsg = @"Don't let the soldiers excape!";
         
@@ -32,6 +33,7 @@
         label2.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:label2];
         
+        //button to start game
         [self addChild: [self buttonNode]];
         
     }
@@ -56,9 +58,9 @@
     if ([node.name isEqualToString:@"buttonNode"]) {
         NSLog(@"button clicked");
         
+        //on click of button, move to game.
         [self runAction:
          [SKAction sequence:@[
-                             // [SKAction waitForDuration:5.0],
                               [SKAction runBlock:^{
              SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
              SKScene * myScene = [[MyScene alloc] initWithSize:self.size];
